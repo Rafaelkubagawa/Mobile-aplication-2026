@@ -144,3 +144,25 @@ Valor: ${valorFormatado}
 Status: ${consulta.status}
 `;
 }
+
+
+
+function listarConsultasPorStatus(
+  consultas: Consulta[],
+  status: StatusConsulta
+): Consulta[] {
+  return consultas.filter((consulta) => consulta.status === status);
+}
+
+function listarConsultasFuturas(
+  consultas: Consulta[]
+): Consulta[] {
+  const agora = new Date();
+
+  return consultas.filter(
+    (consulta) => consulta.data.getTime() > agora.getTime()
+  );
+}
+
+
+const consultas: Consulta[] = [];
