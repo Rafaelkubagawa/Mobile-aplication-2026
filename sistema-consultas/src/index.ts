@@ -10,6 +10,20 @@ const cardiologia: Especialidade = {
   id: 1,
   nome: "Cardiologia",
 };
+const ginecologia: Especialidade = {
+  id: 2,
+  nome: "Ginecologia",
+};
+const pedagogia : Especialidade = {
+  id: 3,
+  nome: "Pedagogia",
+};
+const ortopedia : Especialidade = {
+  id: 4,
+  nome: "Ortopedia",
+};
+
+
 const medico1: Medico = {
   id: 1,
   nome: "Dr. Roberto Silva",
@@ -17,13 +31,53 @@ const medico1: Medico = {
   especialidade: cardiologia,
   ativo: true,
 };
+const medico2: Medico = {
+  id: 2,
+  nome: "Dr. Rodrigo Silva",
+  crm: "CRM12346",
+  especialidade: ginecologia,
+  ativo: true,
+};
+const medico3: Medico = {
+  id: 3,
+  nome: "Dr. Arnaldo Silva",
+  crm: "CRM12347",
+  especialidade: pedagogia,
+  ativo: true,
+};
+const medico4: Medico = {
+  id: 4,
+  nome: "Dr. Jurandir Silva",
+  crm: "CRM12348",
+  especialidade: ortopedia,
+  ativo: true,
+};
+
+
 const paciente1: Paciente = {
   id: 1,
   nome: "Carlos Andrade",
-  cpf: "123.456.789-00",
+  cpf: "756.736.869-91",
   email: "carlos@email.com",
 };
-
+const paciente2: Paciente = {
+  id: 2,
+  nome: "Murilo Costa",
+  cpf: "123.456.789-00",
+  email: "costa@email.com",
+};
+const paciente3: Paciente = {
+  id: 3,
+  nome: "Amilton Ashiro",
+  cpf: "104.947.177-12",
+  email: "ashiro@email.com",
+};
+const paciente4: Paciente = {
+  id: 4,
+  nome: "João Carlos",
+  cpf: "945.523.425-41",
+  email: "joca@email.com",
+};
 
 
 
@@ -49,6 +103,17 @@ function confirmarConsulta(consulta: Consulta): Consulta {
   return {
     ...consulta,
     status: "confirmada",
+  };
+}
+
+function realizarConsulta(consulta: Consulta): Consulta | null {
+  if (consulta.status !== "confirmada") {
+    return null;
+  }
+
+  return {
+    ...consulta,
+    status: "realizada",
   };
 }
 
@@ -79,16 +144,3 @@ Valor: ${valorFormatado}
 Status: ${consulta.status}
 `;
 }
-
-
-
-const consulta1 = criarConsulta(
-  1,
-  medico1,
-  paciente1,
-  new Date(),
-  350
-);
-const consultaConfirmada = confirmarConsulta(consulta1);
-console.log("=== CONSULTA CONFIRMADA ===");
-console.log(exibirConsulta(consultaConfirmada));
