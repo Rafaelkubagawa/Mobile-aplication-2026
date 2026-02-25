@@ -39,3 +39,10 @@ function criarConsulta(
     status: "agendada",
   };
 }
+
+function confirmarConsulta(consulta: Consulta): Consulta {
+  return {
+    ...consulta,
+    status: "confirmada",
+  };
+}
