@@ -167,8 +167,6 @@ function listarConsultasFuturas(
 const consultas: Consulta[] = [];
 
 
-
-
 const consulta1 = confirmarConsulta(
   criarConsulta(1, medico1, paciente1, new Date("2026-03-10"), 350)
 );
@@ -188,14 +186,6 @@ const consulta3: Consulta = {
   status: "realizada",
 };
 
-consultas.push(consulta1);
-
-if (consulta2 !== null) {
-  consultas.push(consulta2);
-}
-
-consultas.push(consulta3);
-
 const consulta4Criada = criarConsulta(
   4,
   medico4,
@@ -208,6 +198,21 @@ const consulta4Confirmada = confirmarConsulta(consulta4Criada);
 
 const consulta4Realizada = realizarConsulta(consulta4Confirmada);
 
+consultas.push(consulta1);
+
+if (consulta2 !== null) {
+  consultas.push(consulta2);
+}
+
+consultas.push(consulta3);
+
 if (consulta4Realizada !== null) {
   consultas.push(consulta4Realizada);
 }
+
+console.log("=== LISTAGEM DE CONSULTAS ===");
+
+consultas.forEach((consulta) => {
+  console.log(`=== CONSULTA #${consulta.id} ===`);
+  console.log(exibirConsulta(consulta));
+});
