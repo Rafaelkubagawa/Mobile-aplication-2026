@@ -216,3 +216,29 @@ consultas.forEach((consulta) => {
   console.log(`=== CONSULTA #${consulta.id} ===`);
   console.log(exibirConsulta(consulta));
 });
+
+
+function calcularFaturamento(
+  consultas: Consulta[]
+): number {
+  return consultas
+    .filter((consulta) => consulta.status === "realizada")
+    .reduce((total, consulta) => total + consulta.valor, 0);
+}
+
+console.log("=== CONSULTAS REALIZADAS ===");
+listarConsultasPorStatus(consultas, "realizada")
+  .forEach((c) => console.log(exibirConsulta(c)));
+
+console.log("=== CONSULTAS FUTURAS ===");
+listarConsultasFuturas(consultas)
+  .forEach((c) => console.log(exibirConsulta(c)));
+
+console.log("=== FATURAMENTO ===");
+const faturamento = calcularFaturamento(consultas);
+console.log(
+  faturamento.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  })
+);
