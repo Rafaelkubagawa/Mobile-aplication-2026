@@ -120,15 +120,20 @@ const consulta1 = confirmarConsulta(criarConsulta(1, medico1, paciente1, new Dat
 const consulta2Criada = criarConsulta(2, medico2, paciente2, new Date("2026-03-15"), 500);
 const consulta2 = cancelarConsulta(consulta2Criada);
 const consulta3 = Object.assign(Object.assign({}, criarConsulta(3, medico3, paciente3, new Date("2025-01-10"), 670)), { status: "realizada" });
+const consulta4Criada = criarConsulta(4, medico4, paciente4, new Date("2025-02-10"), 900);
+const consulta4Confirmada = confirmarConsulta(consulta4Criada);
+const consulta4Realizada = realizarConsulta(consulta4Confirmada);
 consultas.push(consulta1);
 if (consulta2 !== null) {
     consultas.push(consulta2);
 }
 consultas.push(consulta3);
-const consulta4Criada = criarConsulta(4, medico4, paciente4, new Date("2025-02-10"), 900);
-const consulta4Confirmada = confirmarConsulta(consulta4Criada);
-const consulta4Realizada = realizarConsulta(consulta4Confirmada);
 if (consulta4Realizada !== null) {
     consultas.push(consulta4Realizada);
 }
+console.log("=== LISTAGEM DE CONSULTAS ===");
+consultas.forEach((consulta) => {
+    console.log(`=== CONSULTA #${consulta.id} ===`);
+    console.log(exibirConsulta(consulta));
+});
 //# sourceMappingURL=index.js.map
